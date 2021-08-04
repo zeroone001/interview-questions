@@ -30,3 +30,18 @@
 5. filter还能做哪些事情
 
 6. display: flex
+
+
+
+
+
+
+
+
+## 学习的视频
+
+[4天突击大厂常见前端面试题(2020版)](https://www.bilibili.com/video/BV1ek4y1r7GT?p=5&spm_id_from=pageDriver)
+
+## 面试题
+
+[前端经典面试题 ( 60道前端面试题包含 JS、CSS、React、网络、浏览器、程序题等)](https://mp.weixin.qq.com/s/RBK318_QiurLqCyaVSFNYg)
