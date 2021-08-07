@@ -40,7 +40,7 @@
 
 ## 学习的视频
 
-[4天突击大厂常见前端面试题(2020版)](https://www.bilibili.com/video/BV1ek4y1r7GT?p=5&spm_id_from=pageDriver)
+刷完： [4天突击大厂常见前端面试题(2020版)](https://www.bilibili.com/video/BV1ek4y1r7GT?p=1)
 
 ## 面试题
 
