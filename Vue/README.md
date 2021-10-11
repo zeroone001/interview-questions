@@ -48,3 +48,117 @@ reverse()
 
 ## 自定义指令的生命周期（钩子函数）有哪些
 
+```js
+bind
+inserted
+update
+componentUpdated
+unbind
+```
+
+## Vue 怎么定义全局方法
+
+有三种
+
+1. 全局mixin
+
+```vue
+import mixinObj from './mixinObj.js';
+Vue.mixin(mixinObj);
+```
+
+2. Plugins 的方式
+
+```js
+// plugins.js
+const install = (Vue) => {
+	Vue.prototype.demoFun = function () {
+        console.log('我已经在Vue原型链上')
+    }
+}
+export default {
+    install
+}
+// main.js
+import plugins from './plugins.js'
+Vue.use(plugins)
+```
+
+3. `this.$root.$on`
+
+   ```js
+   this.$root.$on('demo',function(){
+       console.log('test');
+   })
+   this.$root.$emit('demo')；
+   this.$root.$off('demo')；
+   ```
+
+## 自定义组件上使用v-model
+
+[官方文档](https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model)
+
+```html
+<!-- parent -->
+<template>
+<child v-model="value"></child>
+</template>
+
+<!-- child -->
+<template>
+<div>
+ {{ value }}   
+ </div>
+</template>
+<script>
+    export default {
+        props: {
+            value: Number
+        },
+        model: {
+            prop: 'value',
+            event: 'update'
+        },
+        methods: {
+            clickFun (val) {
+                this.$emit('update', val)
+            }
+        }
+    }
+</script>
+```
+
+## 在Vue项目中如何引入第三方库（比如jQuery）？有哪些方法可以做到？
+
+1. externals 方法
+
+   ```html
+   <script
+     src="https://code.jquery.com/jquery-3.1.0.js"
+     integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+     crossorigin="anonymous"
+   ></script>
+   ```
+
+```javascript
+module.exports = {
+  //...
+  externals: {
+    jquery: 'jQuery',
+  },
+};
+```
+
+2. Pluginscd
+
+```js
+plugins: [
+         new webpack.ProvidePlugin({
+             $:"jquery",
+             jQuery:"jquery",
+             "windows.jQuery":"jquery"
+         })
+     ]
+
+```
+

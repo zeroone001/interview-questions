@@ -32,6 +32,8 @@ directives: {
 
 一共五个，分别是bind, inserted, update, componentUpdated, unbind
 
+跟Vue3的钩子函数是不一样的
+
 ```js
 Vue.directive('fo', {
   /* 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置 */
