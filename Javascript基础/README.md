@@ -58,3 +58,19 @@ PS : new Promise 的时候，会立即执行里面的函数
 ## 箭头函数
 
 不能被new， 没有原型， 没有构造函数
+
+## 柯里化
+
+下面就是函数柯里化
+
+```js
+const curried = (a) => {
+    return (b) => {
+        return a + b; 
+    }
+}
+const addTen = curried(5);
+
+addTen(5); // 10
+```
+
