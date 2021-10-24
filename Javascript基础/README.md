@@ -74,3 +74,56 @@ const addTen = curried(5);
 addTen(5); // 10
 ```
 
+## 手写深拷贝
+
+```js
+function deepClone(obj = {}) {
+    if (typeof obj !== 'object' || obj === null) {
+        return obj;
+    }
+    let result;
+ 
+    if (obj instanceof Array) {
+        result = [];
+    } else {
+        result = {}
+    }
+
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            result[key] = deepClone(obj[key]);
+        }
+    }
+    return result;
+}
+```
+
+
+## 基础类型
+
+基础类型， 直接存在栈里； 引用类型是存放内存地址在栈里 
+
+引用类型的实际的值，  存在堆里面
+
+## 引用类型
+
+对象，数组，null, 特殊引用类型，函数function 
+
+
+## typeof 运算符
+
+* 可以识别出所有的值类型
+* 判断函数
+* 判断是否是引用类型
+
+
+## 类型转化
+
+
+```js
+if (obj.a == null) {}
+// 相当于
+if (obj.a === null || obj.a === undefined) {}
+```
+
+truly 变量： `!!a === true`
