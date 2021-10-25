@@ -57,9 +57,13 @@ PS : new Promise 的时候，会立即执行里面的函数
 
 ## 箭头函数
 
+
+
 不能被new， 没有原型， 没有构造函数
 
 ## 柯里化
+
+
 
 下面就是函数柯里化
 
@@ -98,8 +102,9 @@ function deepClone(obj = {}) {
 }
 ```
 
-
 ## 基础类型
+
+
 
 基础类型， 直接存在栈里； 引用类型是存放内存地址在栈里 
 
@@ -107,17 +112,26 @@ function deepClone(obj = {}) {
 
 ## 引用类型
 
+
+
 对象，数组，null, 特殊引用类型，函数function 
+
+
+
 
 
 ## typeof 运算符
 
+
+
 * 可以识别出所有的值类型
 * 判断函数
 * 判断是否是引用类型
-
+* 
 
 ## 类型转化
+
+
 
 
 ```js
@@ -127,3 +141,38 @@ if (obj.a === null || obj.a === undefined) {}
 ```
 
 truly 变量： `!!a === true`
+
+
+
+## class
+
+
+
+class的本质是函数，可见是语法糖
+
+
+
+`typeof People === 'function'`
+
+每个class都有显式原型，
+
+每个实例都有隐式原型，指向class的显示原型
+
+
+
+## 原型
+
+
+
+隐式原型：` xialuo.__proto__`
+
+等于
+
+显式原型： `Student.prototype`
+
+
+
+## 原型链
+
+
+
