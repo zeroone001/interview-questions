@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环形进度条</title>
+    <style>
+        @-webkit-keyframes circle_right{
+            0%{
+                -webkit-transform: rotate(-135deg);
+            }
+            50%, 100%{
+                -webkit-transform: rotate(45deg);
+            }
+        }
+        @-webkit-keyframes circle_left{
+            0%, 50% {
+                -webkit-transform: rotate(-135deg);
+            }
+            100%{
+                -webkit-transform: rotate(45deg);
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 20px;
+        }
+        .circle_process {
+            position: relative;
+            width: 199px;
+            height : 200px;
+        }
+        .wrapper {
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            top:0;
+            overflow: hidden;
+        }
+        .right {
+            right: 1px;
+        }
+        .left {
+            left:0;
+        }
+        .circle {
+            width: 160px;
+            height: 160px;
+            border: 20px solid #c9bebe;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            transform : rotate(-135deg);
+            background: #f9f0f0;
+            /* border-image: linear-gradient(45deg, gold, deeppink) 1; */
+        }
+        .leftcircle {
+            border-bottom:20px solid green;
+            border-left:20px solid green;
+            left: 1px;
+            -webkit-animation: circle_left 5s linear infinite;
+        }
+        .rightcircle {
+            border-top: 20px solid green;
+            border-right: 20px solid green;
+            right: 0;
+            -webkit-animation: circle_right 5s linear infinite;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="circle_process">
+        <div class="wrapper right">
+            <div class="circle rightcircle"></div>
+        </div>
+        <div class="wrapper left">
+            <div class="circle leftcircle" ></div>
+          </div>
+    </div>
+</body>
+</html>

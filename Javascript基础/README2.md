@@ -82,3 +82,25 @@ Function.prototype.call = function (context) {
 }
 ```
 
+
+
+## 异步
+
+
+
+```js
+// 1,3,5,4,2
+console.log(1);
+
+setTimeout(() => {
+    console.log(2);
+}, 1000)
+
+console.log(3);
+
+setTimeout(() => {
+    console.log(4);
+}, 0)
+console.log(5);
+```
+
