@@ -104,3 +104,39 @@ setTimeout(() => {
 console.log(5);
 ```
 
+## DOM API 
+
+```js
+// 创建文档片段，目的是为了减少操作DOM的次数
+const frag = document.createDocumentFragment();
+
+```
+
+## 事件
+
+* 事件绑定
+* 事件冒泡
+* 事件代理
+
+## 手写一个ajax
+
+XMLHttpRequest
+
+```js
+const xhr = new XMLHttpRequest();
+// true  指的是异步的请求 
+xhr.open('GET', '/v1/url/id', true);
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+        if (xhr.state === 200) {
+            
+        }
+    }
+}
+xhr.send(null);
+```
+
+## 跨域
+
+* jsonp
+* CORS 设置 http header
