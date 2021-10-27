@@ -140,3 +140,20 @@ xhr.send(null);
 
 * jsonp
 * CORS 设置 http header
+
+## cookie
+
+* 存储大小，最大4KB
+* http请求的时候需要发送到服务器端，增加了请求的数据量
+
+## localStorage & sessionStorage
+
+* HTML5专门为了存储而设计的，最大可存储5M，而且是针对域名来说的
+* API简单
+
+### 区别
+
+* localStorage 数据会永久存储，除非代码或手动删除
+* sessionStorage 数据只存在于当前会话，浏览器关闭则清空
+
+
