@@ -145,6 +145,7 @@ xhr.send(null);
 
 * 存储大小，最大4KB
 * http请求的时候需要发送到服务器端，增加了请求的数据量
+* API很难用
 
 ## localStorage & sessionStorage
 
