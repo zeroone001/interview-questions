@@ -158,3 +158,50 @@ xhr.send(null);
 * sessionStorage 数据只存在于当前会话，浏览器关闭则清空
 
 
+## 隐式类型转换
+
+if , 逻辑运算， ==， +号
+
+## 手写深度比较， isEqual
+
+主要是用了递归
+
+```js
+function isObject(params) {
+    return typeof params === 'object' && params !== null;
+}
+function isEqual(obj1, obj2) {
+    if (!isObject(obj1) || !isObject(obj2)) {
+        return obj1 === obj2;
+    }
+
+    if (obj1 === obj2) {
+        return true
+    }
+
+    const len1 = Object.keys(obj1);
+    const len2 = Object.keys(obj2);
+    if (len1 !== len2) return false;
+
+    for (let key in obj1) {
+        const res = isEqual(obj1[key], obj2[key]);
+        if (!res) return false;
+    }
+    return true;
+}
+```
+
+## 函数声明，函数表达式
+
+* 函数声明，会预加载
+* 函数表达式
+
+## Object 
+
+* new Object()  创建一个对象，也就是 {}, 自带prototype
+* Object.create() 必须传入一个参数
+
+```js
+Object.create(null) // 这样就没有原型了
+Object.create({aaa: 1}) // 指定一个原型 {aaa: 1}
+```

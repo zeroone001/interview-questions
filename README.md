@@ -46,3 +46,10 @@
 
 [前端经典面试题 ( 60道前端面试题包含 JS、CSS、React、网络、浏览器、程序题等)](https://mp.weixin.qq.com/s/RBK318_QiurLqCyaVSFNYg)
 [Vue面试题，中级](https://juejin.cn/post/6844903934314676231#heading-18)
+
+
+generator怎么保存上下文的。
+Proxy怎么实现的，用es5写一下。
+this设计缺陷。
+能不能主动用装饰器。
+响应式编程优点。
