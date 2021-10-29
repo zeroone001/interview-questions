@@ -234,3 +234,34 @@ print(fn) // 200
 
 总结： 自由变量的查找，是在函数**定义**的地方，向上级查找，不是在**执行**的地方
 闭包影响： 变量会常驻内存，得不到释放 ，不能乱用
+
+## 手写深拷贝
+
+```js
+function deepClone(obj) {
+    if (typeof obj !== 'object' || obj == null) {
+        return obj;
+    }
+    let result;
+
+    if (obj instanceof Array) {
+        result = [];
+    } else {
+        result = {};
+    }
+
+    for(let key in obj) {
+        // 保证key 不是原型的属性
+        if (obj.hasOwnProperty(key)) {
+            result[key] = deepClone(obj[key]);
+        }
+    }
+    return result;
+}
+```
+
+Object.assign()  不是深拷贝， 浅层拷贝
+
+## requestAnimateFrame
+
+

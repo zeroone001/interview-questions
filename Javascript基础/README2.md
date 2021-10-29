@@ -202,6 +202,129 @@ function isEqual(obj1, obj2) {
 * Object.create() 必须传入一个参数
 
 ```js
+// 创建一个空对象，然后把原型指向传入的参数
 Object.create(null) // 这样就没有原型了
 Object.create({aaa: 1}) // 指定一个原型 {aaa: 1}
 ```
+
+## this 场景题
+
+函数 this 的值，在执行的时候，才知道
+
+```js
+const user = {
+    name: 'lys',
+    sum: () => {
+        console.log(this.name); // undefined
+    },
+    getName: function (params) {
+        console.log(this.name); // lys
+    }
+}
+const fun = user.sum;
+console.log(user.sum()); // undefined
+fun(); // undefined
+```
+
+## 作用域
+
+```js
+// 返回4个4， 因为index的作用域在外层
+let index;
+for (index = 0; index < 4; index++) {
+    setTimeout(() => {
+        console.log(index);
+    }, 0);
+}
+```
+
+## 手写trim
+
+```js
+String.prototype.trim = function (params) {
+    return this.replace(/^\s+/, '').replace(/\s+$/, '');
+};
+```
+
+## 捕获JS中的异常
+
+```js
+window.onerror = function () {
+
+}
+```
+
+## 什么是JSON
+
+* JSON是一种数据格式，本质上是一段字符串
+* JSON格式和JS对象结构一致，对JS语言更友好
+
+
+## 获取当前页面URL
+
+* location.search
+* URLSearchParams, 新API 兼容性不太好 这个很简单
+
+substr(start, length)
+substring(start, end)
+slice(start, end)
+
+```js
+function query(name) {
+    const search = location.search.substr(1);
+    // * 是0个或多个 >=0
+    const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i'); 
+
+    const res = search.match(reg);
+    if (res == null) {return null}
+    return res[2];
+}
+```
+
+## 将URL参数解析为JS对象
+
+
+
+## 手写flatern 考虑多层级
+
+也就是拍平
+
+```js
+// 只能拍平一层
+Array.prototype.concat.apply([], arr);
+
+function flat(arr) {
+    // 判断各个元素里面是否有数组
+    const isDeep = arr.some((item) => item instanceof Array);
+    // 递归的暂停条件
+    if (!isDeep) {
+        return arr;
+    }
+
+    const res = Array.prototype.concat.apply([], arr);
+
+    return flat(res); // 递归
+}
+```
+
+## 数组去重
+
+
+1. forEach 循环，然后使用indexOf，或者includes来判断新数组，是否有这个item
+2. Set方式
+
+```js
+function unique(arr) {
+    const set = new Set(arr);
+    return [...set];
+}
+```
+
+
+
+
+
+
+
+
+
