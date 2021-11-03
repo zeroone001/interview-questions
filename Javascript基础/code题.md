@@ -103,14 +103,15 @@ console.log(obj,obj2)
 
 function deepClone (obj) {
     if (obj === null) return null;
+
     if (typeof obj !== 'object') return obj;
 
     // 正则
     if(obj instanceof RegExp) {
         return new RegExp(obj);
     }
+    
     // 日期
-
     if (obj instanceof Date) {
         return new Date(obj);
     }
