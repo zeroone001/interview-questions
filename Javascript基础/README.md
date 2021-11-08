@@ -265,3 +265,36 @@ Object.assign()  不是深拷贝， 浅层拷贝
 ## requestAnimateFrame
 
 
+## 获取数组中的最大值和它的下标
+
+```js
+// 方案一， 直接for循环
+
+var a = [1,2,3,4,5,6,7,7,6,5,4,3,2,1];
+ 
+// for循环
+var indexOfMax = 0;
+var tempMax = a[0];
+for(let i = 0; i < a.length; i ++){
+    if(a[i] > tempMax){
+        tempMax = a[i];
+        indexOfMax = i;
+    }
+}
+
+// 方案二 indexOf
+
+const maxVal = Math.max(...a);
+const maxIndex = a.indexOf(maxVal);
+
+// 方案三 reduce
+let maxIndex = 0;
+const maxVal = a.reduce((pre, cur, index) => {
+    if (cur > pre) {
+        maxIndex = index;
+        return cur;
+    }
+    return pre;
+}, 0);
+
+```
