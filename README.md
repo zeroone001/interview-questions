@@ -53,3 +53,135 @@ Proxy怎么实现的，用es5写一下。
 this设计缺陷。
 能不能主动用装饰器。
 响应式编程优点。
+
+## vue双向数据绑定
+
+Vue实现双向数据绑定是采用数据劫持和发布者-订阅者模式。 数据劫持是利用ES5的Object. defineProperty(obj,key,val)方法来劫持每个属性的getter和setter，在数据变动是发布消息给订阅者，从而触发相应的回调来更新视图
+
+## 清除浮动的方法
+
+1. 使用CSS中的clear:both;（放一个空的div，并设置上述css）,属性来清除元素的浮动
+```html
+<div class="container clearfix">
+
+    <div class="wrap">aaa</div>
+
+</div>
+<style>
+.clearfix:after{
+    content:""; /*设置内容为空*/
+    height:0; /*高度为0*/
+    line-height:0; /*行高为0*/
+    display:block; /*将文本转为块级元素*/
+    visibility:hidden; /*将元素隐藏*/
+    clear:both; /*清除浮动*/
+}
+.clearfix{
+    zoom:1; /*为了兼容IE*/
+}
+</style>
+```
+2. 给父级元素设置overflow：hidden；或overflow：auto；本质是构建一个BFC
+
+## 如何让一个盒子垂直水平居中
+
+1. 利用定位（常用方法,推荐）
+
+```html
+<style>
+    .parent {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #000;
+        position: relative;
+    }
+    .child {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #999;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+</style>
+```
+
+2. margin: auto
+
+```html
+ <style>
+    .parent {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #000;
+        position: relative;
+    }
+    .child {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #999;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+```
+
+3. 利用display:table-cell
+
+4. 利用display：flex;设置垂直水平都居中
+
+5. 利用transform
+
+```CSS
+.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+```
+
+## 重绘和回流
+
+什么是重绘Repaint和重排 （回流 reflow）
+重绘: 当元素的一部分属性发生改变，如外观、背景、颜色等不会引起布局变化，只需要浏览器根据元素的新属性重新绘制，使元素呈现新的外观叫做重绘。 
+
+重排（回流）: 当render树中的一部分或者全部因为大小边距等问题发生改变而需要DOM树重新计算的过程
+
+重绘不一定需要重排（比如颜色的改变），重排必然导致重绘（比如改变网页位置）
+
+最小化重绘和回流的方法：
+
+1、需要要对元素进行复杂的操作时，可以先隐藏(display:"none")，操作完成后再显示
+
+2、需要创建多个DOM节点时，使用DocumentFragment创建完后一次性的加入document
+
+缓存Layout属性值，如：var left = elem.offsetLeft; 这样，多次使用 left 只产生一次回流
+
+3、尽量避免用table布局（table元素一旦触发回流就会导致table里所有的其它元素回流）
+
+4、避免使用css表达式(expression)，因为每次调用都会重新计算值（包括加载页面）
+
+5、尽量使用 css 属性简写，如：用 border 代替 border-width, border-style, border-color
+
+6、批量修改元素样式：elem.className 和 elem.style.cssText 代替 elem.style.xxx
+
+## localstroage、sessionstroage、cookie的区别
+
+共同点：都是保存在浏览器端、且同源的
+
+区别：
+1、cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，而sessionStorage和localStorage不会自动把数据发送给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下
+2、存储大小限制也不同，cookie数据不能超过4K，同时因为每次http请求都会携带cookie、所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大
+3、数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭之前有效；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie：只在设置的cookie过期时间之前有效，即使窗口关闭或浏览器关闭
+4、作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localstorage在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的
+5、web Storage支持事件通知机制，可以将数据更新的通知发送给监听者
+6、web Storage的api接口使用更方便
+
+ 
