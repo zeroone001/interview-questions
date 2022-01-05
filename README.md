@@ -198,4 +198,24 @@ Vue实现双向数据绑定是采用数据劫持和发布者-订阅者模式。 
 5、web Storage支持事件通知机制，可以将数据更新的通知发送给监听者
 6、web Storage的api接口使用更方便
 
- 
+## ts中any和unknown有什么区别？
+
+unknown 和 any 的主要区别是 unknown 类型会更加严格：在对 unknown 类型的值执行大多数操作之前，我们必须进行某种形式的检查。而在对 any 类型的值执行操作之前，我们不必进行任何检查
+
+因为bar是一个未知类型(任何类型的数据都可以赋给 unknown 类型)，所以不能确定是否有msg属性。不能通过TS语法检测；而 unkown 类型的值也不能将值赋给 any 和 unkown 之外的类型变量
+
+any 和 unknown 都是顶级类型，但是 unknown 更加严格，不像 any 那样不做类型检查，反而 unknown 因为未知性质，不允许访问属性，不允许赋值给其他有明确类型的变量。
+
+```ts
+let foo: any = 123;
+console.log(foo.msg); // 符合TS的语法
+let a_value1: unknown = foo;   // OK
+let a_value2: any = foo;      // OK
+let a_value3: string = foo;   // OK
+
+let bar: unknown = 222; // OK 
+console.log(bar.msg); // Error
+let k_value1: unknown = bar;   // OK
+let K_value2: any = bar;      // OK
+let K_value3: string = bar;   // Error
+```
