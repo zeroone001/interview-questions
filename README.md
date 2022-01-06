@@ -212,4 +212,35 @@ let K_value3: string = bar;   // Error
 3. 不能用作构造函数，new
 4. 不用用作Generator函数
 
-## 
+## var、let、const之间的区别
+
+1. var 可以重复声明变量
+2. let 是块级元素
+3. var 可以跟window进行映射
+4. const 声明之后必须赋值
+5. const 定义不可变的量，改了就会报错
+
+## ES6的模板字符串有哪些新特性？并实现一个类模板字符串的功能
+
+```js
+
+let name = 'web';
+let age = 10;
+let str = '你好，${name} 已经 ${age}岁了'
+str = str.replace(/\$\{([^}]*)\}/g,function(){
+     return eval(arguments[1]);
+   })
+console.log(str);//你好，web 已经 10岁了
+```
+
+## Map 和 Set
+
+应用场景Set用于数据重组，Map用于数据储存
+
+Set：　
+（1）成员不能重复
+（2）只有键值没有键名，类似数组
+（3）可以遍历，方法有add, delete,has
+Map:
+（1）本质上是健值对的集合，类似集合
+（2）可以遍历，可以跟各种数据格式转换
