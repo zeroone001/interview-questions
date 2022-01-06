@@ -1,17 +1,8 @@
-## 记录自己学过的面试题
-
-
+# Interview
 
 * [Webpack Tree shaking 深入探究](https://juejin.im/post/6844903687412776974)
 
-
-### 网络通信层
-
-
-
-### 
-
-
+## 网络通信层
 
 1. 什么叫标签语义化？
 
@@ -30,12 +21,6 @@
 5. filter还能做哪些事情
 
 6. display: flex
-
-
-
-
-
-
 
 
 ## 学习的视频
@@ -219,3 +204,12 @@ let k_value1: unknown = bar;   // OK
 let K_value2: any = bar;      // OK
 let K_value3: string = bar;   // Error
 ```
+
+## 使用箭头函数应注意什么？
+
+1. this 指向父级
+2. 不能使用arguments
+3. 不能用作构造函数，new
+4. 不用用作Generator函数
+
+## 
