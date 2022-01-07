@@ -244,3 +244,17 @@ Set：　
 Map:
 （1）本质上是健值对的集合，类似集合
 （2）可以遍历，可以跟各种数据格式转换
+
+## Promise构造函数是同步执行还是异步执行，那么 then 方法呢？
+
+promise 构造函数是同步执行，then方法是异步的
+
+## setTimeout、Promise、Async/Await 的区别
+
+[https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/33](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/33)
+
+事件循环中分为宏任务队列和微任务队列
+其中setTimeout的回调函数放到宏任务队列里，等到执行栈清空以后执行promise.then里的回调函数会放到相应宏任务的微任务队列里，等宏任务里面的同步代码执行完再执行async函数表示函数里面可能会有异步方法，await后面跟一个表达式
+async方法执行时，遇到await会立即执行表达式，然后把表达式后面的代码放到微任务队列里，让出执行栈让同步代码先执行
+
+Promise本身是同步的立即执行函数
